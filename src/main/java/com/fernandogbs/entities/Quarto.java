@@ -1,37 +1,38 @@
 package com.fernandogbs.entities;
 
-public class Quarto {
+import java.io.Serializable;
+
+public class Quarto implements Serializable {
     private int numero;
     private String tipo;
-    private boolean disponivel;
+    private double preco;
 
-    public Quarto(int numero, String tipo) {
+    public Quarto(int numero, String tipo, double preco) {
         this.numero = numero;
         this.tipo = tipo;
-        this.disponivel = true;
+        this.preco = preco;
     }
+
+    //getters e setters
 
     public int getNumero() {
         return numero;
-    }
-
-    public void setNumero(int numero) {
-        this.numero = numero;
     }
 
     public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public double getPreco() {
+        return preco;
     }
 
-    public boolean isDisponivel() {
-        return disponivel;
-    }
-
-    public void setDisponivel(boolean disponivel) {
-        this.disponivel = disponivel;
+    @Override
+    public String toString() {
+        return "Quarto{" +
+                "numero=" + numero +
+                ", tipo='" + tipo + '\'' +
+                ", preco=" + preco +
+                '}';
     }
 }

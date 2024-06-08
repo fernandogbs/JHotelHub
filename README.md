@@ -1,5 +1,9 @@
 # Sistema de Reservas de Hotel
 
+## Requisitos
+- Java 17+
+- Ambiente para visualização e teste do código (VSCode, Intellij, Eclipse, Vim)
+
 ## Funcionalidades do Sistema
 
 - Cadastro de Quartos:
@@ -21,105 +25,59 @@
       Relatórios de reservas por período.
 
 
-## Estruturas de Dados Sugeridas
+## Estrutura da Aplicação
 
 - Classe Quarto:
-    - Atributos: número, tipo, capacidade, disponibilidade.
+
 ~~~java 
 public class Quarto {
     private int numero;
     private String tipo;
-    private int capacidade;
-    private boolean disponivel;
+    private double preco;
 
     // Construtor, getters e setters
 }
 ~~~
 - Classe Hospede:
-    - Atributos: id, nome, documento, contato.
+
 ~~~java 
 public class Hospede {
-    private int id;
     private String nome;
-    private String documento;
-    private String contato;
+    private String telefone;
+    private String email;
 
     // Construtor, getters e setters
 }
 ~~~
 
 - Classe Reserva:
-    - Atributos: id, quarto, hóspede, dataCheckIn, dataCheckOut, status.
 
 ~~~java 
 public class Reserva {
-    private int id;
-    private Quarto quarto;
     private Hospede hospede;
-    private LocalDate dataCheckIn;
-    private LocalDate dataCheckOut;
-    private String status; // "reservada", "check-in", "check-out"
+    private Quarto quarto;
+    private LocalDate checkIn;
+    private LocalDate checkOut;
 
     // Construtor, getters e setters
 }
 ~~~
 
-- Classe Hotel:
-    - Atributos: listas de quartos, hóspedes e reservas.
+- Classe Sistema:
 
 ~~~java 
-public class Hotel {
-    private List<Quarto> quartos;
+public class Sistema {
     private List<Hospede> hospedes;
+    private List<Quarto> quartos;
     private List<Reserva> reservas;
+    private Map<String, List<Reserva>> reservasPorHospede;
 
     // Métodos para cadastro de quartos, hóspedes, reservas, check-in, check-out, geração de relatórios, etc.
 }
 ~~~
 
 ## Banco de Dados
-
-
-Estrutura do Banco de Dados
-- Tabela Quarto:
-    - Colunas: numero, tipo, capacidade, disponivel.
-~~~sql
-CREATE TABLE Quarto (
-    numero INT PRIMARY KEY,
-    tipo VARCHAR(50),
-    capacidade INT,
-    disponivel BOOLEAN
-);
-~~~
-
-- Tabela Hospede:
-    - Colunas: id, nome, documento, contato.
-
-~~~sql
-
-CREATE TABLE Hospede (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(100),
-    documento VARCHAR(20),
-    contato VARCHAR(50)
-);
-~~~
-
-- Tabela Reserva:
-    - Colunas: id, quarto_numero, hospede_id, dataCheckIn, dataCheckOut, status.
-
-~~~sql
-CREATE TABLE Reserva (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    quarto_numero INT,
-    hospede_id INT,
-    dataCheckIn DATE,
-    dataCheckOut DATE,
-    status VARCHAR(20),
-    FOREIGN KEY (quarto_numero) REFERENCES Quarto(numero),
-    FOREIGN KEY (hospede_id) REFERENCES Hospede(id)
-);
-~~~
+### Será persistido em arquivo .dat gerado pelo Serializable, interface do Java
 
 ## Metodologia de Desenvolvimento
 
@@ -128,37 +86,35 @@ CREATE TABLE Reserva (
         Definição das funcionalidades principais e secundárias.
 
     Modelagem do Sistema:
-        Criação de diagramas de classes.
         Definição das estruturas de dados e do banco de dados.
 
     Desenvolvimento:
-        Implementação das classes principais (Quarto, Hospede, Reserva, Hotel).
+        Implementação das classes principais (Quarto, Hospede, Reserva, Sistema).
         Desenvolvimento dos métodos para manipulação de dados.
         
     Documentação:
-        Escrita do relatório final com o resumo, introdução, metodologia e execução.
+        Detalhamento e manual de como utilizar a aplicação
         Inclusão de prints das telas do sistema e explicações detalhadas.
 
 ## Execução
+    Para utilizar a aplicação é necessário cadastrar o Quarto e em seguida o Hospede
+    assim então fazer CheckIn ou Reserva.
 
     Cadastro de Quartos:
-        Tela/formulário para cadastrar novos quartos.
-        Listagem de quartos existentes com status de disponibilidade.
+        formulário para cadastrar novos quartos.
 
     Registro de Hóspedes:
-        Tela/formulário para cadastrar novos hóspedes.
-        Listagem de hóspedes existentes.
+        Formulário para cadastrar novos hóspedes.
+        Listagem de hóspedes existentes e quartos ocupados pelos mesmos.
 
     Gerenciamento de Reservas:
-        Tela/formulário para criar, atualizar e cancelar reservas.
+        Formulário para criar, atualizar e cancelar reservas.
         Listagem de reservas com possibilidade de alteração de status.
 
     Check-in e Check-out:
         Funcionalidade para realizar check-in e check-out.
         Atualização do status dos quartos e reservas.
 
-    Relatórios:
-        Tela para selecionar período e gerar relatórios de ocupação de quartos e reservas.
 
 ## Estruturas de Dados Utilizadas
 

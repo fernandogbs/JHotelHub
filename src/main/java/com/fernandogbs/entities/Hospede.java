@@ -1,27 +1,38 @@
 package com.fernandogbs.entities;
 
-public class Hospede {
-    private String nome;
-    private String contato;
+import java.io.Serializable;
 
-    public Hospede(String nome, String contato) {
+public class Hospede implements Serializable {
+    private String nome;
+    private String telefone;
+    private String email;
+
+    public Hospede(String nome, String telefone, String email) {
         this.nome = nome;
-        this.contato = contato;
+        this.telefone = telefone;
+        this.email = email;
     }
+
+    //getters e setters
 
     public String getNome() {
         return nome;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public String getContato() {
-        return contato;
+    public String getEmail() {
+        return email;
     }
 
-    public void setContato(String contato) {
-        this.contato = contato;
+    @Override
+    public String toString() {
+        return "Hospede{" +
+                "nome='" + nome + '\'' +
+                ", telefone='" + telefone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
