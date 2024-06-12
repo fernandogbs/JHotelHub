@@ -8,6 +8,14 @@ import java.io.*;
 import java.time.LocalDate;
 import java.util.*;
 
+
+/*MEMBROS DO GRUPO*/
+// FERNANDO GUSTAVO B. SANTOS
+// João Paulo Rosa Batista
+// Gabriel de Jesus Ribeiro
+// Arthur Galvão Loureiro Argôlo
+// Felipe Souza Teixeira da Silva
+
 public class SistemaReservas {
 
     public static void main(String[] args) {
