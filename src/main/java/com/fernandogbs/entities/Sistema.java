@@ -11,11 +11,15 @@ import java.util.Map;
 import java.util.*;
 
 public class Sistema {
+//   contém listas de hóspedes, quartos, reservas e um mapa de reservas por hóspede.
+//   é responsável por gerenciar todas as operações do sistema de reservas do hotel
     private List<Hospede> hospedes;
     private List<Quarto> quartos;
     private List<Reserva> reservas;
     private Map<String, List<Reserva>> reservasPorHospede;
 
+
+    //O construtor inicializa as listas e o mapa, e carrega os dados salvos de um arquivo.
     public Sistema() {
         hospedes = new ArrayList<>();
         quartos = new ArrayList<>();
@@ -24,18 +28,24 @@ public class Sistema {
         carregarDados();
     }
 
+
+    /* metodos publicos */
+
+    //Adiciona um novo hóspede à lista e salva os dados.
     public void adicionarHospede(String nome, String telefone, String email) {
         Hospede hospede = new Hospede(nome, telefone, email);
         hospedes.add(hospede);
         salvarDados();
     }
 
+    //Adiciona um novo quarto à lista e salva os dados.
     public void adicionarQuarto(int numero, String tipo, double preco) {
         Quarto quarto = new Quarto(numero, tipo, preco);
         quartos.add(quarto);
         salvarDados();
     }
 
+    //Cria uma nova reserva para um hóspede específico em um quarto específico, se ambos existirem, e salva os dados.
     public void criarReserva(String nomeHospede, int numeroQuarto, LocalDate checkIn, LocalDate checkOut) {
         Hospede hospede = buscarHospede(nomeHospede);
         Quarto quarto = buscarQuarto(numeroQuarto);
@@ -50,6 +60,7 @@ public class Sistema {
         }
     }
 
+    //Consulta e imprime todas as reservas de um hóspede específico.
     public void consultarReservasPorHospede(String nomeHospede) {
         List<Reserva> reservasHospede = reservasPorHospede.getOrDefault(nomeHospede, new ArrayList<>());
         if (reservasHospede.isEmpty()) {
@@ -61,6 +72,7 @@ public class Sistema {
         }
     }
 
+    //Consulta e imprime todas as reservas que incluem uma data específica.
     public void consultarReservasPorData(LocalDate data) {
         List<Reserva> reservasData = new ArrayList<>();
         for (Reserva reserva : reservas) {
@@ -78,6 +90,7 @@ public class Sistema {
         }
     }
 
+    //Cancela uma reserva específica de um hóspede com base na data de check-in.
     public void cancelarReserva(String nomeHospede, LocalDate checkIn) {
         List<Reserva> reservasHospede = reservasPorHospede.get(nomeHospede);
         if (reservasHospede != null) {
@@ -94,6 +107,9 @@ public class Sistema {
         System.out.println("Reserva não encontrada para o hóspede " + nomeHospede + " na data " + checkIn);
     }
 
+    /* metodos privados */
+
+    //Busca um hóspede pelo nome.
     private Hospede buscarHospede(String nome) {
         for (Hospede hospede : hospedes) {
             if (hospede.getNome().equals(nome)) {
@@ -103,6 +119,7 @@ public class Sistema {
         return null;
     }
 
+    //Busca um quarto pelo número.
     private Quarto buscarQuarto(int numero) {
         for (Quarto quarto : quartos) {
             if (quarto.getNumero() == numero) {
@@ -112,6 +129,7 @@ public class Sistema {
         return null;
     }
 
+    //Salva os dados em um arquivo chamado dados.dat.
     private void salvarDados() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("dados.dat"))) {
             oos.writeObject(hospedes);
@@ -123,6 +141,7 @@ public class Sistema {
         }
     }
 
+    //Carrega os dados de um arquivo chamado dados.dat.
     private void carregarDados() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("dados.dat"))) {
             hospedes = (List<Hospede>) ois.readObject();

@@ -3,10 +3,12 @@ package com.fernandogbs.entities;
 import java.io.Serializable;
 
 public class Hospede implements Serializable {
-    private String nome;
-    private String telefone;
-    private String email;
+    //definição de variaveis constantes
+    private final String nome;
+    private final String telefone;
+    private final String email;
 
+    //construtor
     public Hospede(String nome, String telefone, String email) {
         this.nome = nome;
         this.telefone = telefone;
@@ -14,7 +16,6 @@ public class Hospede implements Serializable {
     }
 
     //getters e setters
-
     public String getNome() {
         return nome;
     }
@@ -27,6 +28,7 @@ public class Hospede implements Serializable {
         return email;
     }
 
+    //impressão de informações do hospede
     @Override
     public String toString() {
         return "Hospede{" +

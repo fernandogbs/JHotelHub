@@ -9,20 +9,21 @@ import java.time.LocalDate;
 import java.util.*;
 
 
-/*MEMBROS DO GRUPO*/
-// FERNANDO GUSTAVO B. SANTOS
-// João Paulo Rosa Batista
-// Gabriel de Jesus Ribeiro
-// Arthur Galvão Loureiro Argôlo
-// Felipe Souza Teixeira da Silva
-
+/*
+    *   MEMBROS DO GRUPO
+    * FERNANDO GUSTAVO B. SANTOS
+    * João Paulo Rosa Batista
+    * Gabriel de Jesus Ribeiro
+    * Arthur Galvão Loureiro Argôlo
+    * Felipe Souza Teixeira da Silva
+*/
 public class SistemaReservas {
 
     public static void main(String[] args) {
         Sistema sistema = new Sistema(); //Instancia a classe responsável pelo conjunto de estrutura de dados
         Scanner scanner = new Scanner(System.in); //Classe I/O do java.
 
-        /*Menu inicial*/
+        //Menu interativo inicial
         while (true) {
             System.out.println("\n=== Sistema de Reservas de Hotel ===");
             System.out.println("1. Adicionar Hóspede");
@@ -37,7 +38,7 @@ public class SistemaReservas {
             int opcao = scanner.nextInt();
             scanner.nextLine(); // Limpar o buffer do scanner
 
-            /*Define a opção a ser utilizada pelo usuário, chamando a estrutura de dados responsável pela task*/
+            //Define a opção a ser utilizada pelo usuário, chamando a estrutura de dados responsável pela task
             switch (opcao) {
                 case 1:
                     System.out.print("Nome do hóspede: ");

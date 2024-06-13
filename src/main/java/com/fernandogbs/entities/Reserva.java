@@ -5,11 +5,13 @@ import java.time.LocalDate;
 
 
 public class Reserva implements Serializable {
-    private Hospede hospede;
-    private Quarto quarto;
-    private LocalDate checkIn;
-    private LocalDate checkOut;
+    //variaveis constantes
+    private final Hospede hospede;
+    private final Quarto quarto;
+    private final LocalDate checkIn;
+    private final LocalDate checkOut;
 
+    //construtor
     public Reserva(Hospede hospede, Quarto quarto, LocalDate checkIn, LocalDate checkOut) {
         this.hospede = hospede;
         this.quarto = quarto;
@@ -18,7 +20,6 @@ public class Reserva implements Serializable {
     }
 
     //getters e setters
-
     public Hospede getHospede() {
         return hospede;
     }
@@ -35,6 +36,7 @@ public class Reserva implements Serializable {
         return checkOut;
     }
 
+    //impressão de informações da Reserva
     @Override
     public String toString() {
         return "Reserva{" +

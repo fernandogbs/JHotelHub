@@ -3,10 +3,12 @@ package com.fernandogbs.entities;
 import java.io.Serializable;
 
 public class Quarto implements Serializable {
-    private int numero;
-    private String tipo;
-    private double preco;
+    //definição de variaveis constantes
+    private final int numero;
+    private final String tipo;
+    private final double preco;
 
+    //Construtor
     public Quarto(int numero, String tipo, double preco) {
         this.numero = numero;
         this.tipo = tipo;
@@ -14,7 +16,6 @@ public class Quarto implements Serializable {
     }
 
     //getters e setters
-
     public int getNumero() {
         return numero;
     }
@@ -27,6 +28,7 @@ public class Quarto implements Serializable {
         return preco;
     }
 
+    //impressão de informações do Quarto
     @Override
     public String toString() {
         return "Quarto{" +
